@@ -36,9 +36,9 @@ commit is when you input data into pycharm then push it into my fork
 - What does `push` mean?
 push means im putting my commit into my fork
 - Where is your code stored locally?
-in my project files 
+in my computer files 
 - Where is your code stored remotely?
-in my pycharm
+my github fork
 Notes:
 
 ______________________________________________________
