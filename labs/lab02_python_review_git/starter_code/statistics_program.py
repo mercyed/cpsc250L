@@ -33,6 +33,12 @@ def read_temperatures(filename):
     # TODO: Convert each non-blank line to a float.
     # TODO: Append each temperature to the temperatures list.
 
+    with open(filename, "r") as file:
+        for line in file:
+            if line != "/n":
+                number = float(line.strip())
+                temperatures.append(number)
+
     return temperatures
 
 
