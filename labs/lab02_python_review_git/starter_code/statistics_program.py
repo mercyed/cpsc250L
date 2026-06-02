@@ -93,9 +93,9 @@ def print_summary(values):
     # TODO: Improve this output formatting.
     print("Temperature Summary")
     print("Number of readings:", count)
-    print(f"Minimum temperature:, {minimum:.2}")
-    print(f"Maximum temperature:, {maximum:.2}")
-    print(f"Average temperature:, {average:.4}")
+    print(f"Minimum temperature:, {minimum:.2f}")
+    print(f"Maximum temperature:, {maximum:.2f}")
+    print(f"Average temperature:, {average:.4f}")
 
 
 def main():
