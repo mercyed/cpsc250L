@@ -47,7 +47,12 @@ def compute_average(values):
     Compute the average of a list of numbers.
     """
     # TODO: Replace this with a correct average calculation.
-    return 0.0
+    count = len(values)
+    sum = 0.0
+    for i in range(count):
+        sum = sum + values[i]
+    average = sum / count
+    return average
 
 
 def compute_minimum(values):
@@ -55,7 +60,12 @@ def compute_minimum(values):
     Compute the minimum value in a list of numbers.
     """
     # TODO: Replace this with a correct minimum calculation.
-    return 0.0
+    min = values[0]
+    for values in values:
+        if values < min:
+            min = values
+
+    return values
 
 
 def compute_maximum(values):
