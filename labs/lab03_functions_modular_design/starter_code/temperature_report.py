@@ -1,8 +1,8 @@
 def read_temperatures(filename):
    # read temps from file
-   temperatures = []
+    filename =  temperatures = []
 
-with open(read_temperatures(), 'r') as file:
+with open(filename, 'r') as file:
     for line in file:
         line = line.strip()
     if line:
@@ -28,7 +28,8 @@ def find_minimum(values):
 # finds min
 
 def count_above_threshold(values, threshold):
-    pass
+    return sum(1 for t in values if t > threshold)
+# counts above threshold
 
 def print_report(values):
     pass
