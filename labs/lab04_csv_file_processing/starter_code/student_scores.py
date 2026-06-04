@@ -24,6 +24,7 @@ def calculate_average(scores):
 
     If the list is empty, return None.
     """
+   # calcute the avereges anf chekcs if there is a empty set if so return none.
     sum = 0
     count = 0
     for score in scores:
@@ -73,9 +74,9 @@ def read_scores(filename):
         else:
             # convert this line into a dict
             name = row[0]
-            scores = [clean_score(row[1]),clean_scores(row[2]),clean_score(row[3])]
+            scores = [clean_score(row[1]),clean_score(row[2]),clean_score(row[3])]
             average = calculate_average(scores)
-            my_dict = {"name":  name, "scores": scores_list, "average": avgerage}
+            my_dict = {"name":  name, "scores": scores, "average": average}
             my_list.append(my_dict)
     return my_list
 
@@ -93,17 +94,19 @@ def letter_grade(average):
     If the average is None, return "N/A".
     """
     # if there is no avarege we cannont grade
-if average == None:
-    return "N/A"
+    if average == None:
+        return "N/A"
    #check for range higest to lowest
-if average >= 87:
-    return "A"
-elif average >= 77:
-    return "C"
-elif average >= 57:
-    return "D"
-else:
-    return "F"
+    if average >= 87:
+        return "A"
+    elif average >= 77:
+        return "B"
+    elif average >= 67:
+        return "C"
+    elif average >= 57:
+        return "D"
+    else:
+        return "F"
 
 
 def print_student_report(records):
@@ -111,7 +114,16 @@ def print_student_report(records):
     Print one line of output for each student.
     """
 
-
+    for student in records:
+        name = student["name"]
+        avg = student["average"]
+        grade = letter_grade(avg)
+        # if no averge  print n/a
+        if avg == None:
+            avg_str = "N/A"
+        else:
+            avg_str = str(round(avg, 2))
+        print(name + ": Average = " + avg_str + " Grade = " + grade)
 
 def print_class_summary(records):
     """
@@ -123,7 +135,27 @@ def print_class_summary(records):
         highest average
         lowest average
     """
-    pass
+    num_students = len(records)
+    # calcute afges taht are not none
+    averages = []
+    for student in records:
+        if student["average"] != None:
+            averages.append(student["average"])
+    #calcute the class stats
+    if len(averages) > 0:
+        class_average = calculate_average(averages)
+        highest_average = max(averages)
+        lowest_average = min(averages)
+    else:
+        class_average = None
+        highest_average = None
+        lowest_average = None
+
+        # print everything out
+    print("Number of students: " + str(num_students))
+    print("Class average: " + str(round(class_average, 2)))
+    print("Highest average: " + str(round(highest_average, 2)))
+    print("Lowest average: " + str(round(lowest_average, 3)))
 
 
 def main():
