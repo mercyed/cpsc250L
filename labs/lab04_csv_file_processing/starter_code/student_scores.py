@@ -3,14 +3,19 @@
 # Complete this program so that it reads quiz score data from a CSV file,
 # cleans the data, computes student averages, and prints a report.
 
-
+import csv
 def clean_score(score_text):
     """
     Convert a score string into an integer.
 
     If the score is missing or invalid, return None.
     """
-    pass
+    if score_text == "" or score_text == None:
+        return None
+    if score_text.isdigit():
+        return int(score_text)
+    else:
+        return None
 
 
 def calculate_average(scores):
@@ -19,7 +24,16 @@ def calculate_average(scores):
 
     If the list is empty, return None.
     """
-    pass
+    sum = 0
+    count = 0
+    for score in scores:
+        if score is not None:
+            sum += score
+            count += 1
+    if count > 0:
+        return sum / count
+    else:
+        return None
 
 
 def read_scores(filename):
@@ -48,8 +62,22 @@ def read_scores(filename):
         ...
     ]
     """
-    pass
-
+    my_list = []
+    #open file and read it with csv reader
+    with open(filename) as csvfile:
+       reader = csv.reader(csvfile)
+       for row in reader:
+           # ignore first row
+        if reader.line_num == 1:
+            continue
+        else:
+            # convert this line into a dict
+            name = row[0]
+            scores = [clean_score(row[1]),clean_scores(row[2]),clean_score(row[3])]
+            average = calculate_average(scores)
+            my_dict = {"name":  name, "scores": scores_list, "average": avgerage}
+            my_list.append(my_dict)
+    return my_list
 
 def letter_grade(average):
     """
@@ -64,14 +92,25 @@ def letter_grade(average):
 
     If the average is None, return "N/A".
     """
-    pass
+    # if there is no avarege we cannont grade
+if average == None:
+    return "N/A"
+   #check for range higest to lowest
+if average >= 87:
+    return "A"
+elif average >= 77:
+    return "C"
+elif average >= 57:
+    return "D"
+else:
+    return "F"
 
 
 def print_student_report(records):
     """
     Print one line of output for each student.
     """
-    pass
+
 
 
 def print_class_summary(records):
@@ -89,7 +128,7 @@ def print_class_summary(records):
 
 def main():
     filename = "../data/quiz_scores.csv"
-
+    #
     records = read_scores(filename)
 
     print_student_report(records)
