@@ -13,7 +13,10 @@ class StudentRecord:
             student_id: student ID as a string
             scores[]: scores as a list (empty by default)
         """
-        pass
+        self.name = name
+        self.student_id = student_id
+        self.scores = []
+
 
     def add_score(self, score):
         """
@@ -21,7 +24,8 @@ class StudentRecord:
 
         Only add scores between 0 and 100.
         """
-        pass
+        if 0 <= score <= 100:
+            self.scores.append(score)
 
     def calculate_average(self):
         """
@@ -29,7 +33,7 @@ class StudentRecord:
 
         If the student has no scores, return None.
         """
-        pass
+
 
     def highest_score(self):
         """
