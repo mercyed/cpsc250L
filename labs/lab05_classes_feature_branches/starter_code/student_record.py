@@ -68,16 +68,16 @@ class StudentRecord:
             D: average >= 57
             F: otherwise
         """
-        avg = self.calculate_average()
-        if avg is None:
+        average = self.calculate_average()
+        if average is None:
             return "N/A"
-        if avg >= 87:
+        if average >= 87:
             return "A"
-        elif avg >= 77:
+        elif average >= 77:
             return "B"
-        elif avg >= 67:
+        elif average >= 67:
             return "C"
-        elif avg >= 57:
+        elif average >= 57:
             return "D"
         else:
             return "F"
@@ -86,7 +86,7 @@ class StudentRecord:
         """
         Return a readable string representation of the student record.
         """
-        avg = self.calculate_average()
-        avg_str = f"{avg:.2f}" if avg is not None else "No scores"
+        average = self.calculate_average()
+        avg_str = f"{average:.2f}" if average is not None else "No scores"
         grade = self.letter_grade()
         return f"student: {self.name} ({self.student_id}) Average: {avg_str} Grade:{grade}"
