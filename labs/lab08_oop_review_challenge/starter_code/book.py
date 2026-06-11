@@ -24,10 +24,15 @@ class Book:
         Return True if the sale succeeds.
         Return False otherwise.
         """
-        pass
+
+        if amount <= self.quantity:
+            self.quantity += amount
+            return True
+
+        return False
 
     def __str__(self):
-        pass
+
 
     def __lt__(self, other):
         """

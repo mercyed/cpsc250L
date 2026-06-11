@@ -55,7 +55,7 @@ def main():
     print_inventory(inventory)
 
     print()
-    print("Total inventory:", total_inventory_value(inventory))
+    print("Total inventory:", total_inventory(inventory))
 
     print()
     print("Books by Octavia Butler")
