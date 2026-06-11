@@ -15,7 +15,7 @@ class Book:
         """
         Increase quantity by amount.
         """
-        pass
+        self.quantity += amount
 
     def sell_copies(self, amount):
         """
@@ -26,16 +26,23 @@ class Book:
         """
 
         if amount <= self.quantity:
-            self.quantity += amount
+            self.quantity -= amount
             return True
 
         return False
 
     def __str__(self):
+        return (
+            f"{self.title} by {self.author} ({self.year}) - "
+            f"{self.genre}, {self.pages} pages, "
+            f"rating: {self.rating}/5, stock: {self.quantity}"
+        )
+
 
 
     def __lt__(self, other):
         """
         Compare books alphabetically by title.
         """
-        pass
+        return self.title < other.title
+
