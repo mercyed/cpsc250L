@@ -3,7 +3,13 @@
 
 class Book:
     def __init__(self, title, author, year, genre, pages, rating):
-        pass
+        self.title = title
+        self.author = author
+        self.year = year
+        self.genre = genre
+        self.pages = pages
+        self.rating = rating
+        self.quantity = 0
 
     def add_stock(self, amount):
         """
