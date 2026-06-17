@@ -4,9 +4,9 @@ def linear_search(values, target):
     for i in range(len(values)):
         compare += 1
         if values[1] == target:
-            return (i, compare)
+            return i, compare
 
-    return (-1, compare)
+    return -1, compare
 
 
 
@@ -19,6 +19,14 @@ def binary_search(values, target):
         mid = (left + right) // 2
         compare += 1
 
+        if values[mid] == target:
+            return mid, compare
+        elif values[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1, compare
 
 
 def f(x):
