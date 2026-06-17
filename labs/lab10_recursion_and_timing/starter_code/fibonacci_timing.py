@@ -57,7 +57,7 @@ def main():
     # TODO: make the y-axis logarithmic
 
     plt.plot(values, hi, marker="o", label="Recursive")
-    plt.plot(values, bye, marker="o", label="Iterative")
+    plt.plot(values, bye    , marker="o", label="Iterative")
 
     plt.xlabel("n")
     plt.ylabel("Time (seconds)")
