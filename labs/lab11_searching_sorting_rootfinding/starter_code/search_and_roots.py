@@ -3,7 +3,7 @@ def linear_search(values, target):
 
     for i in range(len(values)):
         compare += 1
-        if values[1] == target:
+        if values[i] == target:
             return i, compare
 
     return -1, compare
@@ -34,8 +34,8 @@ def f(x):
 
 
 def bisection_root(function, left, right, tolerance):
-    while (right - left) / 2 < tolerance:
-        mid = (left - right) / 2
+    while (right - left) / 2 > tolerance:
+        mid = (left + right) / 2
 
         if function(mid) == 0:
             return mid
