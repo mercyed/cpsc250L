@@ -34,7 +34,18 @@ def f(x):
 
 
 def bisection_root(function, left, right, tolerance):
-    pass
+    while (right - left) / 2 < tolerance:
+        mid = (left - right) / 2
+
+        if function(mid) == 0:
+            return mid
+
+        if function(left) * function(mid) < 0:
+            right = mid
+        else:
+            left = mid
+
+    return (left + right) / 2
 
 
 def main():
