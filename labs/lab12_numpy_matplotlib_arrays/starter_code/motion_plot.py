@@ -14,7 +14,7 @@ def main():
     # Goal: create plots of x vs. t, y vs. t, v_x vs. t, and v_y vs. t
     #       for 0 < t < 10 seconds
     #
-    # TODO: create time array using np.linspace
+    # TODO: create time array using np.linespace
     # TODO: compute position and velocity arrays
     # TODO: make and save plots
     speed = 50

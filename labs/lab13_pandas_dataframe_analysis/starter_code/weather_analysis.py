@@ -3,31 +3,36 @@ import matplotlib.pyplot as plt
 
 
 def load_weather_data(filename):
-    # TODO: load the data from csv file
-    # TODO: return a Pandas dataframe
-    pass
+    return pd.read_csv(filename)
 
 
 def print_summary(df):
-    # TODO: print summary statistics
-    # TODO: extract the mean temperature and print it
-    pass
+    print(df.describe())
+
+    mean_temp = df["high_C"].mean()
+    print(f"\nMean High Temperature: {mean_temp:.2f} C")
+
 
 def add_celsius(df):
-    # TODO: add columns for temperatures converted to Celsius
-    # TODO: return modified dataframe
-    pass
+    df["high_C"] = (df["high"] - 32) * 5 / 9
+    df["low_C"] = (df["low"] - 32) * 5 / 9
+    return df
 
 
 def clean_temperature_range(df, t_low_cut, t_high_cut):
-    # TODO: remove days where T_low < t_low_cut or T_high > t_high_cut
-    # TODO: return modified dataframe
-    pass
+    return df[(df["low_C"] >= t_low_cut) &
+              (df["high_C"] <= t_high_cut)]
 
 
 def plot_temperatures(df):
-    # TODO: plot both high and low temperatures on the same graph
-    pass
+    plt.plot(df["day"], df["high_C"], label="High Temp")
+    plt.plot(df["day"], df["low_C"], label="Low Temp")
+
+    plt.xlabel("Day")
+    plt.ylabel("Temperature (C)")
+    plt.title("Daily Temperatures")
+    plt.legend()
+    plt.show()
 
 
 def main():
@@ -45,5 +50,6 @@ def main():
     print_summary(dataframe)
 
     plot_temperatures(dataframe)
+
 
 main()
