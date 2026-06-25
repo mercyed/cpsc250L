@@ -1,30 +1,44 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
+from scipy.optimize import curve_fit
 
 def load_data(filename):
     # TODO: load data in filename into pandas dataframe and return it
-    pass
+    return pd.read_csv(filename)
 
 def fit_polyfit(df):
     # TODO: fit a first order polynomial and return slope and intercept
-    pass
+    slope, intercept = np.polyfit(df['hours'], df['score'], 1)
+    return slope, intercept
 
 def fit_statsmodel(df):
     # TODO: carry out a linear regression fit and return the results object
-    pass
+    x = sm.add_constant(df['hours'])
+    model = sm.OLS(df['score'], x)
+    results = model.fit()
+    return results
 
 def fit_curve_fit(df):
     # TODO: fit a first order polynonial and return slope, int, dslope, dint
-    pass
+    popt, pcov = curve_fit(fitfunc, df['hours'], df['score'])
+
+    slope = popt[0]
+    intercept = popt[1]
+
+    dslope = np.sqrt(pcov[0,0])
+    dint = np.sqrt(pcov[1,1])
+
+    return slope, intercept, dslope, dint
 
 def predict(x, slope, intercept):
     # TODO: return y-values based on x, slope, intercept
-    pass
+    return slope * x + intercept
 
 def fitfunc(x, *param):
     # TODO: write a linear fit function for use with curve_fit
-    pass
+    return param [0] * x + param[1]
 
 
 def main():
